@@ -32,9 +32,6 @@ class ABloodOfDownCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputMappingContext* DefaultMappingContext;
 
-	/** Jump Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* JumpAction;
 
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
@@ -55,6 +52,7 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+
 			
 
 protected:
@@ -65,9 +63,15 @@ protected:
 	virtual void BeginPlay();
 
 public:
+
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+private:
+	class UAIPerceptionStimuliSourceComponent* StimulusSource;
+	
+	void SetupStimulusSource();
 };
 
