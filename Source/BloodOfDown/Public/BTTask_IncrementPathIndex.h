@@ -20,5 +20,11 @@ public:
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 
 protected:
-	enum class EDirection {};
+	enum class EDirectionType {Forward, Reverse};
+
+
+	EDirectionType Direction = EDirectionType::Forward;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI", meta = (AllowPrivateAccess = "true"))
+	bool bBiDirectional = false;
 };
